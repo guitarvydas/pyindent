@@ -1,13 +1,12 @@
 scm2py {
 
-Def = "(" id<"define"> "(" ident ident ident ")" Expr ")"
+Def = "(" kw<"define"> "(" ident ident ident ")" Expr ")"
 Expr =
-  | "(" Expr ")" -- rec
-  | PlusExpr -- plus
+  | "(" kw<"let"> "(" "(" ident Expr ")" ")" Expr? ")" -- let
+  | "(" "+" Expr Expr ")" Expr? -- plus
+  | "(" Expr ")" Expr? -- rec
   | atom -- atom
   
-PlusExpr = "(" "+" Expr Expr ")"
-
 kw<s> = id<s>
 id<s> = "❲" s "❳"
 ident = "❲" idchar+ "❳"

@@ -5,10 +5,11 @@ def «fname» («id2», «id3»):⤷
 return «e»⤶
 ’
 
-Expr_rec [lb e rb] = ‛«lb»«e»«rb»’
-Expr_plus [e] = ‛«e»’
+Expr_rec [lb e rb more?] = ‛«lb»«e»«rb»«more»’
+Expr_let [lb1 _let lb2 lb3 id v rb4 rb2 e? rb1] = ‛«id» = «v»
+«e»’  
+Expr_plus [lp _plus e1 e2 rp more?] = ‛(«e1») + («e2»)«more»’
 Expr_atom [a] = ‛«a»’
-PlusExpr [lp _plus e1 e2 rp] = ‛(«e1») + («e2»)’
 
 kw [s] = ‛«s»’
 id [lb s rb] = ‛«s»’
