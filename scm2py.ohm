@@ -1,0 +1,18 @@
+scm2py {
+
+Def = "(" id<"define"> "(" ident ident ident ")" Expr ")"
+Expr =
+  | "(" Expr ")" -- rec
+  | PlusExpr -- plus
+  | atom -- atom
+  
+PlusExpr = "(" "+" Expr Expr ")"
+
+kw<s> = id<s>
+id<s> = "❲" s "❳"
+ident = "❲" idchar+ "❳"
+idchar = ~"❲" ~"❳" any
+atom =
+  | ident -- ident
+  | digit+ -- integer
+}
