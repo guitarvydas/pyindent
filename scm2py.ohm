@@ -1,11 +1,7 @@
 scm2py {
 
 Def = "(" kw<"define"> "(" ident ident ident ")" Expr ")"
-Expr =
-  | "(" kw<"let"> "(" "(" ident Expr ")" ")" Expr? ")" -- let
-  | "(" "+" Expr Expr ")" Expr? -- plus
-  | "(" Expr ")" Expr? -- rec
-  | atom -- atom
+Expr = "(" "+" atom atom ")"
   
 kw<s> = id<s>
 id<s> = "❲" s "❳"
