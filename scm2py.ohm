@@ -1,8 +1,16 @@
 scm2py {
 
-Def = "(" kw<"define"> "(" ident ident ident ")" Expr ")"
-Expr = "(" "+" atom atom ")"
-  
+Def = "(" kw<"define"> "(" fname argname* ")" ScopeOrExpr ")"
+ScopeOrExpr =
+  | Scope -- scope
+  | Expr+ -- expr
+Scope = "(" kw<"let"> "(" "(" ident Expr ")" ")" ScopeOrExpr? ")"
+Expr =
+  | "(" "+" atom atom ")" Expr? -- add
+  | "(" "-" atom atom ")" Expr? -- subtract
+
+fname = ident
+argname = ident
 kw<s> = id<s>
 id<s> = "❲" s "❳"
 ident = "❲" idchar+ "❳"

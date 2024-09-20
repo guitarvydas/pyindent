@@ -1,0 +1,7 @@
+def   f  ( x  y ):
+    _v = None
+    def   a  ():
+        def   b  ():
+            _v =  a () +  b ()
+    return _v
+    

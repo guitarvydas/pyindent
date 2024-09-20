@@ -1,4 +1,4 @@
-(define (plus4299 c d)
-  (let ((a 42))
-    (let ((b 99))
+(defun f (x y) 
+  (let a ((+ x y))
+    (let b ((- x y))
       (+ a b))))
