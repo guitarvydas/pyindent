@@ -13,6 +13,7 @@ scm2py: scm2py.drawio py0d.py
 clean:
 	rm -rf *.json
 	rm -rf *~
+	rm -rf junk*
 	rm -rf __pycache__
 
 install-js-requires:
